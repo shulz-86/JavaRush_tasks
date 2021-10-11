@@ -20,11 +20,13 @@ public class Solution {
             Human ivanov = new Human("Ivanov", new Asset("home", 999_999.99), new Asset("car", 2999.99));
             ivanov.save(outputStream);
             outputStream.flush();
+            outputStream.close();
 
             Human somePerson = new Human();
             somePerson.load(inputStream);
-            inputStream.close();
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
+            System.out.println(ivanov.equals(somePerson));
+            inputStream.close();
 
         } catch (IOException e) {
             //e.printStackTrace();
@@ -69,10 +71,31 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            PrintWriter printWriter = new PrintWriter(outputStream);
+
+            printWriter.println(this.name);
+
+            if (this.assets.size() > 0) {
+                for (Asset current : this.assets) {
+                    printWriter.println(current.getName());
+                    printWriter.println(current.getPrice());
+                }
+            }
+            printWriter.close();
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            this.name = reader.readLine();
+
+            String assetName;
+            double assetPrice;
+            while ((assetName = reader.readLine()) != null && (assetPrice = Double.parseDouble(reader.readLine())) != 0) {
+                this.assets.add(new Asset(assetName, assetPrice));
+            }
+            reader.close();
         }
     }
 }

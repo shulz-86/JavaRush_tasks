@@ -1,6 +1,6 @@
 package com.javarush.task.task19.task1918;
 
-import org.jsoup.Jsoup;
+/*import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 Знакомство с тегами
 */
 
-public class Solution {
+/*public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader reader = new BufferedReader(new FileReader(rd.readLine()));
@@ -35,4 +35,4 @@ public class Solution {
             System.out.println(elements);
         }
     }
-}
+}*/

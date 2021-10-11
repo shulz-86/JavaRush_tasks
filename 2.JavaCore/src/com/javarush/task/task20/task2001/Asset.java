@@ -6,8 +6,8 @@ public class Asset {
         this.price = price;
     }
 
-    private String name;
-    private double price;
+    private final String name;
+    private final double price;
 
     public String getName() {
         return name;
