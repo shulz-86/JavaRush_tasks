@@ -1,6 +1,6 @@
 package com.javarush.task.task19.task1918;
 
-/*import org.jsoup.Jsoup;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
@@ -16,23 +16,29 @@ import java.io.InputStreamReader;
 Знакомство с тегами
 */
 
-/*public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
-        BufferedReader reader = new BufferedReader(new FileReader(rd.readLine()));
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
-
-        while ((line = reader.readLine()) != null){
-            stringBuilder.append(line);
+public class Solution {
+    public static void main(String[] args) {
+        String tag = args[0];
+        String fileName = null;
+        
+        try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = consoleReader.readLine();
+        } catch (IOException e) {
         }
-        rd.close();
-        reader.close();
+        
+        StringBuilder readFileContent = new StringBuilder();
 
-        Document document = Jsoup.parse(stringBuilder.toString(), "", Parser.xmlParser());
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
+            while (fileReader.ready()) {
+                readFileContent.append(fileReader.readLine().replaceAll("[\\r\\n]+", ""));
+            }
+        } catch (IOException e) {
+        }
+
+        Document document = Jsoup.parse(readFileContent.toString(), "", Parser.xmlParser());
         Elements elem = document.select(args[0]);
         for (Element elements : elem){
             System.out.println(elements);
         }
     }
-}*/
+}
