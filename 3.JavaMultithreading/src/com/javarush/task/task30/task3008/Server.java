@@ -60,8 +60,9 @@ public class Server {
                 }
 
             } catch (IOException | ClassNotFoundException e) {
-                ConsoleHelper.writeMessage("Произошла ошибка при обмене данными с удаленным адресом");
+                ConsoleHelper.writeMessage("Произошла ошибка при обмене данными с удаленным адресом "  + socket.getRemoteSocketAddress());
             }
+
             ConsoleHelper.writeMessage("Соединение с удаленным адресом закрыто");
         }
         /**
